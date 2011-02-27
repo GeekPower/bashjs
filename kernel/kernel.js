@@ -3,11 +3,12 @@
     kernel.prototype = {
         /* Initialize `boot-time` drivers, console, etc... */
         boot: function(cmdline) {
+          bashjs.load_js('/lib/console.js');
           bashjs.load_js('/vfs/mounter.js');
           bashjs.load_js('/vfs/vfs.js');
           
           bashjs.load_js('/vfs/fs.root.js');
-          bashjs.load_js('/lib/console.js');
+          
         },
         
         /* Driver map.  "name" -> "object" */
