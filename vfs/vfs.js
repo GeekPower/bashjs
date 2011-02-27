@@ -2,15 +2,8 @@
  * mount a pseudo device file to a mount point
  */
 
-<<<<<<< HEAD
-
-
-
-function fs() {
-=======
 vfs = {
 	var mnt_array = [];
->>>>>>> c73cc4ed4cace33f9401b7284878632f55a7aed8
 
 	'mount': function mount(device, mount_point, options) {
 		mnt_array.push(new Mounter(device, mount_point, options));
