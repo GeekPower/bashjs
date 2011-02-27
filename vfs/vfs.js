@@ -17,19 +17,19 @@
 			this.mount_point = mount_point;
 			this.options = options;
 
-			this._superblock = new this.superblock();
-
-			/* TODO: get fstype from options*/
-			this._superblock.fstype = options;
-			this._superblock.device = device;
-			this._superblock.resource = false;
+//			this._superblock = new this.superblock();
+//
+//			/* TODO: get fstype from options*/
+//			this._superblock.fstype = options;
+//			this._superblock.device = device;
+//			this._superblock.resource = false;
 		},
 
-		superblock: function() {
-			this.superblock.fstype = false;
-			this.superblock.device = false;
-			this.superblock.resource = false;
-		},
+//		superblock: function() {
+//			this.superblock.fstype = false;
+//			this.superblock.device = false;
+//			this.superblock.resource = false;
+//		},
 
 		mnt_array: [],
 		super_array: [],
