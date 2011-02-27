@@ -17,6 +17,9 @@
 			this.mount_point = mount_point;
 			this.options = options;
 
+			/* TODO: get fstype from options */
+			this.fstype = options;
+
 //			this._superblock = new this.superblock();
 //
 //			/* TODO: get fstype from options*/
@@ -102,7 +105,11 @@
 			if (_mounter == null)
 				return false;
 
-			/* TODO: look for driver type */
+			driver = bashjs.kernel.drivers(_mounter.fstype));
+			if (typeof(driver) == "undefined")
+				return false;
+
+			driver.open(rfn);
 		},
 
 		close: function(fd) {
