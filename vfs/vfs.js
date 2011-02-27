@@ -105,7 +105,7 @@
 			if (_mounter == null)
 				return false;
 
-			driver = bashjs.kernel.drivers(_mounter.fstype));
+			driver = bashjs.kernel.drivers[_mounter.fstype];
 			if (typeof(driver) == "undefined")
 				return false;
 
