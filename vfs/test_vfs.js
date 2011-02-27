@@ -34,7 +34,7 @@ function test_mount_umount() {
 
 function test_multi_umount() {
 	vfs.umount("are");
-	/* new mount should fail */
+	/* new umount should fail */
 	if (vfs.umount("are") == false);
 		return true;
 }
