@@ -9,17 +9,15 @@ Superblock.prototype = {
 }
 
 
-mnt_array = [];
-
 vfs = {
 	mnt_array: '',
 
 	'mount': function mount(device, mount_point, options) {
-		mnt_array.push(new Mounter(device, mount_point, options));
+		mnt_array.push(new mounter(device, mount_point, options));
 	},
 
 	'umount': function umount(mount_point) {
-		for(var i = 0; i < mnt_array; i++) {
+		for(var i = 0; i < mnt_array.length; i++) {
 			if (mnt_array[i].mount_point == mount_point) {
 				delete mnt_array[i];
 			}
