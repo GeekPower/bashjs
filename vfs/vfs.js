@@ -6,6 +6,11 @@ vfs = {
 	mnt_array: [],
 	super_array: [],
 
+	'reset': function reset() {
+		mnt_array = [];
+		super_array = []
+	},
+
 	'is_mount': function is_mount(mount_point) {
 		for (var i = 0; i < this.mnt_array.length; i++) {
 			if (this.mnt_array[i].mount_point == mount_point) {
@@ -48,8 +53,17 @@ vfs = {
 		return points;
 	},
 
-	'open': function open(filename) {
-		/* do nothing, successfully */
+	get_mount_point_for_filename: function (f) {
+		partial = f.substring(1, f.length);
+		return "/" + partial.substring(0, partial.indexOf("/"));
+	},
+
+	get_relative_filename: function (f) {
+	},
+
+	open: function (filename) {
+		mp = this.get_mount_point_for_filename(filename);
+		rfn = this.get_relative_filename(filename);
 	},
 
 	'close': function close(fd) {
