@@ -1,4 +1,8 @@
 /*
+ * mounter; dynamic mount point structure
+ */
+
+/*
  * mount a pseudo device file to a mount point
  */
 
@@ -8,15 +12,34 @@
 	}
 
 	vfs.prototype = {
+		mounter: function(device, mount_point, options) {
+			this.device = device;
+			this.mount_point = mount_point;
+			this.options = options;
+
+			this._superblock = new this.superblock();
+
+			/* TODO: get fstype from options*/
+			this._superblock.fstype = options;
+			this._superblock.device = device;
+			this._superblock.resource = false;
+		},
+
+		superblock: function() {
+			this.superblock.fstype = false;
+			this.superblock.device = false;
+			this.superblock.resource = false;
+		},
+
 		mnt_array: [],
 		super_array: [],
 
-		'reset': function reset() {
+		reset: function() {
 			mnt_array = [];
 			super_array = []
 		},
 
-		get_mount: function (mount_point) {
+		get_mount: function(mount_point) {
 			for (var i = 0; i < this.mnt_array.length; i++) {
 				if (this.mnt_array[i].mount_point == mount_point) {
 					return this.mnt_array[i];
@@ -26,15 +49,15 @@
 			return null;
 		},
 
-		'mount': function mount(device, mount_point, options) {
+		mount: function(device, mount_point, options) {
 			if (this.get_mount(mount_point) != null)
 				return false;
 
-			this.mnt_array.push(new mounter(device, mount_point, options));
+			this.mnt_array.push(new this.mounter(device, mount_point, options));
 			return true;
 		},
 
-		'umount': function umount(mount_point) {
+		umount: function(mount_point) {
 			this.idx_array = [];
 			for (var i = 0; i < this.mnt_array.length; i++) {
 				if (this.mnt_array[i].mount_point == mount_point) {
@@ -52,7 +75,7 @@
 			return true;
 		},
 
-		'get_mount_points': function get_mount_points() {
+		get_mount_points: function() {
 			points = [];
 			for (var i = 0; i < this.mnt_array.length; i++) {
 				points.push(this.mnt_array[i].mount_point);
@@ -82,31 +105,31 @@
 			/* TODO: look for driver type */
 		},
 
-		'close': function close(fd) {
+		close: function(fd) {
 			/* do nothing, successfully */
 		},
 
-		'fcntl': function fcntl(fd, options) {
+		fcntl: function(fd, options) {
 			/* do nothing, successfully */
 		},
 
-		'opendir': function opendir(fd) {
+		opendir: function(fd) {
 			/* do nothing, successfully */
 		},
 
-		'readdir': function readdir(fd) {
+		readdir: function(fd) {
 			/* do nothing, successfully */
 		},
 
-		'read': function read(fd, size) {
+		read: function(fd, size) {
 			/* do nothing, successfully */
 		},
 
-		'write': function write(fd, buffer) {
+		write: function(fd, buffer) {
 			/* do nothing, successfully */
 		},
 
-		'lseek': function lseek(fd, buffer) {
+		lseek: function(fd, buffer) {
 			/* do nothing, successfully */
 		}
 	}
