@@ -1,16 +1,10 @@
 /*
  * mount a pseudo device file to a mount point
  */
-function Superblock() {}
-Superblock.prototype = {
-    fstype: false,
-    device: false,
-    resource: false
-}
-
 
 vfs = {
 	mnt_array: [],
+	super_array: [],
 
 	'is_mount': function is_mount(mount_point) {
 		for (var i = 0; i < this.mnt_array.length; i++) {
