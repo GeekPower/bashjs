@@ -35,9 +35,15 @@ vfs = {
 				this.idx_array.push(i);
 			}
 		}
+
+		/* nothing to unmount */
+		if (this.idx_array.length == 0)
+			return false;
+
 		for (var i = 0; i < this.idx_array.length; i++) {
 			this.mnt_array.splice(this.idx_array[i], 1);
 		}
+		return true;
 	},
 
 	'get_mount_points': function get_mount_points() {
