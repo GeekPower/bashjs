@@ -1,6 +1,13 @@
 /*
  * mount a pseudo device file to a mount point
  */
+function Superblock() {}
+Superblock.prototype = {
+    fstype: false,
+    device: false,
+    resource: false
+}
+
 
 vfs = {
 	var mnt_array = [];
