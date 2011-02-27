@@ -1,5 +1,10 @@
 function hello()
 {
-    bashjs.bash.write( '1' );
+    this.start = function()
+    {
+        bashjs.bash.write( 'world' );
+    }
 }
 
+var temp_val = new hello();
+temp_val.start();
