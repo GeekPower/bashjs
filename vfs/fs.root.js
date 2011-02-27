@@ -4,9 +4,9 @@ function SuperblockFsRoot() {}
 SuperblockFsRoot.prototype.fstype = "fstype_root";
 
 (function(bashjs) {
+    console.log('Loading FS.ROOT');
     var driver_name = "fstype_root";
-    var fs_root = {
-        
+    var fs_root = {	
 	open: function(superblock, filename) {
             if(!getObjectType(superblock) == "SuperblockFsRoot")
                 return false;
@@ -39,7 +39,7 @@ SuperblockFsRoot.prototype.fstype = "fstype_root";
 	}
     }
     
-    bashjs._drivers[this.driver_name] = this.fs_root;
+    bashjs.kernel.drivers[driver_name] = fs_root;
 })(bashjs);
 
 

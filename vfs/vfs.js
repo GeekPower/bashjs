@@ -108,7 +108,7 @@
 			driver = bashjs.kernel.drivers[_mounter.fstype];
 			if (typeof(driver) == "undefined")
 				return false;
-
+			
 			driver.open(rfn);
 		},
 

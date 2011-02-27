@@ -4,16 +4,14 @@
         /* Initialize `boot-time` drivers, console, etc... */
         boot: function(cmdline) {
           bashjs.load_js('/lib/console.js');
-          bashjs.load_js('/vfs/mounter.js');
           bashjs.load_js('/vfs/vfs.js');
           
           bashjs.load_js('/vfs/fs.root.js');
-          
         },
         
         /* Driver map.  "name" -> "object" */
         drivers: {
-            //"fstype_root": fsroot,
+            //"fs_root": bashjs.fsroot,
             //"console": console
         },
         
@@ -70,3 +68,7 @@
     bashjs.kernel = new kernel();        
     
 })(bashjs);
+
+bashjs.kernel.boot();
+
+
