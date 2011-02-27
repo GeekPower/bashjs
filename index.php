@@ -11,6 +11,7 @@
         <script>
             $(document).ready( function()
             {
+                bashjs.init();
             } );
             
         </script>

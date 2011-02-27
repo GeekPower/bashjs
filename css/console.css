@@ -1,6 +1,46 @@
 .console_container
 {
     width: 100%;
-    height: 50%;
+    height: 100%;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
     
+    font-family:courier, "courier new", monospace;
+    font-size:1em;
+
+
+    //opacity:0.4;
+    //filter:alpha(opacity=40);
+
+    color: #0f0;
+}
+
+.console_input
+{
+    width: 99%;
+
+    position: absolute;
+    bottom: 0px;
+
+    background-color: #444;
+    color: #0f0;
+
+    font-family:courier, "courier new", monospace;
+    font-size:1em;
+
+    font-weight: bold;
+
+}
+
+.console_text
+{
+    height: 100%;
+    background-color: #111;
+    color: #0f0;
+
+    font-family:courier, "courier new", monospace;
+    font-size:1em;
 }
